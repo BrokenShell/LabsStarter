@@ -8,7 +8,7 @@ from Fortuna import random_range
 
 log = logging.getLogger(__name__)
 router = APIRouter()
-model = load('app/api/clf.joblib')
+model = load('app/api/model.joblib')
 
 
 class Iris(BaseModel):

@@ -3,6 +3,6 @@ from joblib import dump
 
 
 X, y = datasets.load_iris(return_X_y=True)
-clf = svm.SVC(probability=True)
-clf.fit(X, y)
-dump(clf, '../project/app/api/clf.joblib')
+model = svm.SVC(probability=True)
+model.fit(X, y)
+dump(model, '../app/api/model.joblib')
