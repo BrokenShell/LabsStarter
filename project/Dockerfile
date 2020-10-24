@@ -4,10 +4,9 @@ FROM python:3.8
 # set working directory
 WORKDIR /usr/src/app
 
-# Linux Updates
+# install linux updates
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install nano
 
 # install python dependencies
 RUN python -m pip install --upgrade pip
