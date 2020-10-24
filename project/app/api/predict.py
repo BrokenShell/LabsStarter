@@ -12,7 +12,7 @@ model = load('app/api/model.joblib')
 
 
 class Iris(BaseModel):
-    """ Example: [5.7, 2.8, 4.1, 1.3] == 1 Versicolor 98.35% """
+    """ Example: [5.7, 2.8, 4.1, 1.3] == 1 Versicolor 98.38% """
     sepal_length: float = Field(..., example=5.7)
     sepal_width: float = Field(..., example=2.8)
     petal_length: float = Field(..., example=4.1)
