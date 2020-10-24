@@ -4,9 +4,10 @@ import uvicorn
 
 from app.api import predict, viz
 
+
 app = FastAPI(
-    title='GenMod',
-    description='Generative Modeling Toolkit',
+    title='LabsStarter',
+    description='This is just a test.',
     version='0.1',
     docs_url='/',
 )

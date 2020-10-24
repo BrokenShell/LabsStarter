@@ -1,3 +1,3 @@
-# GenMod: Generative Modeling Toolkit
+# LabsStarter
 
-[Docs](https://docs.labs.lambdaschool.com/data-science/)
+This is just a test.
