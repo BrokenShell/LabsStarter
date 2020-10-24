@@ -1,55 +1,37 @@
 import logging
-import random
 
 from fastapi import APIRouter
 import pandas as pd
 from pydantic import BaseModel, Field, validator
+from joblib import load
+
 
 log = logging.getLogger(__name__)
 router = APIRouter()
+model = load('model/clf.joblib')
 
 
-class Item(BaseModel):
-    """Use this data model to parse the request body JSON."""
-
-    x1: float = Field(..., example=3.14)
-    x2: int = Field(..., example=-42)
-    x3: str = Field(..., example='banjo')
+class Iris(BaseModel):
+    sepal_length: float = Field(..., example=5.8)
+    sepal_width: float = Field(..., example=2.3)
+    petal_length: float = Field(..., example=3.3)
+    petal_width: float = Field(..., example=1.0)
 
     def to_df(self):
-        """Convert pydantic object to pandas dataframe with 1 row."""
         return pd.DataFrame([dict(self)])
 
-    @validator('x1')
-    def x1_must_be_positive(cls, value):
-        """Validate that x1 is a positive number."""
-        assert value > 0, f'x1 == {value}, must be > 0'
+    @validator('sepal_length', 'sepal_width', 'petal_length', 'petal_width')
+    def must_be_positive(cls, value):
+        assert value > 0, f'value == {value}, must be > 0'
         return value
 
 
 @router.post('/predict')
-async def predict(item: Item):
-    """
-    Make random baseline predictions for classification problem 🔮
-
-    ### Request Body
-    - `x1`: positive float
-    - `x2`: integer
-    - `x3`: string
-
-    ### Response
-    - `prediction`: boolean, at random
-    - `predict_proba`: float between 0.5 and 1.0, 
-    representing the predicted class's probability
-
-    Replace the placeholder docstring and fake predictions with your own model.
-    """
-
-    X_new = item.to_df()
-    log.info(X_new)
-    y_pred = random.choice([True, False])
-    y_pred_proba = random.random() / 2 + 0.5
+async def predict(iris: Iris):
+    lookup = ('setosa', 'versicolor', 'virginica')
+    X = iris.to_df()
+    log.info(X)
+    y_pred = model.predict(X)
     return {
-        'prediction': y_pred,
-        'probability': y_pred_proba
+        'prediction': lookup[y_pred[0]],
     }
