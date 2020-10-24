@@ -2,7 +2,7 @@ from joblib import load
 from sklearn import datasets
 
 
-model = load('../app/api/model.joblib')
+model = load('../project/app/api/model.joblib')
 
 
 if __name__ == '__main__':
