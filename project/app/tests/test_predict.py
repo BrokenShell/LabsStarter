@@ -34,3 +34,8 @@ def test_invalid_input():
     body = response.json()
     assert response.status_code == 422
     assert 'x1' in body['detail'][0]['loc']
+
+
+if __name__ == '__main__':
+    test_valid_input()
+    test_invalid_input()

@@ -18,3 +18,8 @@ def test_invalid_input():
     body = response.json()
     assert response.status_code == 404
     assert body['detail'] == 'State code ZZ not found'
+
+
+if __name__ == '__main__':
+    test_valid_input()
+    test_invalid_input()

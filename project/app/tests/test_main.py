@@ -10,3 +10,7 @@ def test_docs():
     response = client.get('/')
     assert response.status_code == 200
     assert response.headers['content-type'].startswith('text/html')
+
+
+if __name__ == '__main__':
+    test_docs()
