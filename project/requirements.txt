@@ -5,3 +5,4 @@ uvicorn==0.11.8
 requests==2.24.0
 joblib==0.17.0
 scikit-learn==0.23.2
+Fortuna==3.20.3
