@@ -8,4 +8,6 @@ model = load('clf.joblib')
 if __name__ == '__main__':
     X, y = datasets.load_iris(return_X_y=True)
     for i in range(1, len(X)):
+        print(X[i])
         print(f"Y Pred {i}:", model.predict([X[i]])[0], f"Y True: {y[i]}")
+        print(max(model.predict_proba([X[i]])[0]))
