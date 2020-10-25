@@ -4,7 +4,6 @@ from fastapi import APIRouter
 import pandas as pd
 from pydantic import BaseModel, Field, validator
 from joblib import load
-from Fortuna import random_range
 
 log = logging.getLogger(__name__)
 router = APIRouter()
@@ -37,5 +36,4 @@ async def predict(iris: Iris):
     return {
         'prediction': y_pred,
         'probability': y_pred_proba,
-        'random_value': random_range(1, 100)
     }
