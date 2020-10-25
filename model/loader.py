@@ -2,14 +2,12 @@ from joblib import load
 from sklearn import datasets
 
 
-model = load('../project/app/api/model.joblib')
+model = load('../project/app/model.joblib')
+X, y = datasets.load_iris(return_X_y=True)
 
-
-if __name__ == '__main__':
-    X, y = datasets.load_iris(return_X_y=True)
-    for i in range(len(X)):
-        data = list(X[i])
-        pred = model.predict([X[i]])[0]
-        y_true = y[i]
-        proba = max(model.predict_proba([X[i]])[0])
-        print(f'#{i} {data}: {pred}/{y_true} @ {100 * proba:.0f}%')
+for i in range(len(X)):
+    row = X[i]
+    y_true = y[i]
+    y_pred, *_ = model.predict([row])
+    y_prob, *_ = model.predict_proba([row])
+    print(f'#{i} {list(row)}: {y_pred}/{y_true} @ {100 * y_prob[y_pred]:.2f}%')

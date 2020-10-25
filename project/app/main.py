@@ -1,21 +1,18 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+from app import predict
 
-from app.api import predict, viz
-
-
-app = FastAPI(
+API = FastAPI(
     title='LabsStarter',
     description='This is just a test.',
     version='0.1',
     docs_url='/',
 )
 
-app.include_router(predict.router)
-app.include_router(viz.router)
+API.include_router(predict.router)
 
-app.add_middleware(
+API.add_middleware(
     CORSMiddleware,
     allow_origins=['*'],
     allow_credentials=True,
@@ -23,5 +20,6 @@ app.add_middleware(
     allow_headers=['*'],
 )
 
+
 if __name__ == '__main__':
-    uvicorn.run(app)
+    uvicorn.run(API)
