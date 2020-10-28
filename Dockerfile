@@ -3,6 +3,7 @@ FROM python:3.8-slim-buster
 
 # sets unbuffered python IO
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE 1
 
 # installs linux updates
 RUN apt-get update
@@ -10,7 +11,7 @@ RUN apt-get upgrade -y
 
 # sets working directory & adds files
 WORKDIR /usr/src/project
-COPY . .
+COPY project .
 
 # installs dependencies
 RUN python -m pip install --upgrade pip
