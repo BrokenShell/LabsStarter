@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-import uvicorn
 from app import predict
 
 API = FastAPI(
@@ -22,4 +21,6 @@ API.add_middleware(
 
 
 if __name__ == '__main__':
+    import uvicorn
+    # This is for initial testing Only! Use Docker.
     uvicorn.run(API)
