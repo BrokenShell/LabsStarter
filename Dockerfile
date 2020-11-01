@@ -18,7 +18,3 @@ RUN python -m pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 ENTRYPOINT uvicorn app.main:API
-#EXPOSE 8000/tcp
-
-# docker build . -t hrf-ds-api
-# docker run -p 8000:8000 hrf-ds-api
