@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: python -m app.main
+  web: docker run -p 8000:8000 web
