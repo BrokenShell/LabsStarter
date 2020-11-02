@@ -4,7 +4,15 @@ from app import predict
 
 API = FastAPI(
     title='LabsStarter',
-    description="<h3>This is a test of `FastAPI > Docker > Heroku`</h3>",
+    description="""## API Stack: `FastAPI > Docker > Heroku`
+### Iris Classifier Model - Support Vector Machine
+- `fastapi`
+- `pydantic`
+- `joblib`
+- `scikit-learn`
+- `pandas`
+- `uvicorn`
+""",
     version='0.1',
     docs_url='/',
 )
