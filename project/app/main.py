@@ -4,8 +4,8 @@ from app import predict
 
 
 API = FastAPI(
-    title='LabsStarter',
-    description="""## API Stack: `FastAPI > Docker > Heroku`
+    title='LABS28-API',
+    description="""## API Tech Stack: `FastAPI > Docker > Heroku`
 ### Iris Classifier Model - Support Vector Machine
 - `fastapi`
 - `pydantic`
@@ -13,8 +13,22 @@ API = FastAPI(
 - `scikit-learn`
 - `pandas`
 - `uvicorn`
+
+To install and run with your favorite virtual environment:
+```
+(venv) $ pip install -r project/requirements.txt
+(venv) $ cd project
+(venv) project $ uvicorn app.main:API --host=0.0.0.0 --port=${PORT:-5000}
+```
+
+To build and run a local docker image:
+```
+$ docker build . -t hrf
+$ docker run -it -p 5000:5000 hrf uvicorn app.main:API --host=0.0.0.0 --port=5000
+```
+To deploy, push to GitHub and use the Heroku GitHub integration tool.
 """,
-    version='0.1',
+    version='0.42',
     docs_url='/',
 )
 
@@ -33,7 +47,4 @@ API.add_middleware(
 
 if __name__ == '__main__':
     import uvicorn
-    # This is here for initial testing only!
-    # To run locally: cd into /project and run the following:
-    # $ uvicorn app.main:API --host=0.0.0.0 --port=${PORT:-5000}
     uvicorn.run(API)
