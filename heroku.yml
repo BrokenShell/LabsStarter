@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: uvicorn app.main:API
+  web: uvicorn app.main:API --port 5000
