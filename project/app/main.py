@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+# from fastapi.middleware.cors import CORSMiddleware
 from app import predict
 
 API = FastAPI(
@@ -17,18 +17,22 @@ API = FastAPI(
     docs_url='/',
 )
 
+# API Routes:
 API.include_router(predict.router)
 
-API.add_middleware(
-    CORSMiddleware,
-    allow_origins=['*'],
-    allow_credentials=True,
-    allow_methods=['*'],
-    allow_headers=['*'],
-)
+# CORS Middleware should be enabled only if your app needs it
+# API.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=['*'],
+#     allow_credentials=True,
+#     allow_methods=['*'],
+#     allow_headers=['*'],
+# )
 
 
 if __name__ == '__main__':
     import uvicorn
-    # This is for initial testing Only! Use Docker.
+    # This is for initial testing Only!
+    # To run locally: cd into /project and run the following:
+    # $ uvicorn app.main:API --host=0.0.0.0 --port=${PORT:-5000}
     uvicorn.run(API)
