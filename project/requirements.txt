@@ -1,4 +1,5 @@
 fastapi==0.60.1
+pydantic==1.6.1
 pandas==1.1.0
 uvicorn==0.11.8
 joblib==0.17.0
