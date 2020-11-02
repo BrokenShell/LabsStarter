@@ -33,7 +33,7 @@ API.add_middleware(
 
 if __name__ == '__main__':
     import uvicorn
-    # This is here for initial testing Only!
+    # This is here for initial testing only!
     # To run locally: cd into /project and run the following:
     # $ uvicorn app.main:API --host=0.0.0.0 --port=${PORT:-5000}
     uvicorn.run(API)
