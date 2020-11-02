@@ -4,7 +4,7 @@ from app import predict
 
 API = FastAPI(
     title='LabsStarter',
-    description='This is just a test.',
+    description="<h3>This is a test of `FastAPI > Docker > Heroku`</h3>",
     version='0.1',
     docs_url='/',
 )
